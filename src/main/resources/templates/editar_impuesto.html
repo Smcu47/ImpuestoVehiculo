@@ -1,0 +1,95 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Edición de Impuestos</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+    <!-- Optional theme -->
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+          crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                    aria-controls="navbar">
+                <span class="sr-only">App Impuesto de Vehículos </span> <span
+                    class="icon-bar"></span> <span class="icon-bar"></span> <span
+                    class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#" th:href="@{/impuestos}">Listado de Impuestos</a>
+
+        </div>
+
+    </div>
+</nav>
+<br>
+<br>
+<div class="container">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+
+
+                <h1>Editar Impuesto</h1>
+                <div class="card-body">
+                    <form th:action="@{/impuestos/{serial}(serial=${impuesto.id})}" method="post" th:object="${impuesto}">
+                        <div class="form-group">
+                            <label class="control-label" for="placa">Placa: </label> <input
+                                id="placa" type="text" class="form-control" th:field="*{placa}"
+                                required autofocus="autofocus">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="modelo">Modelo: </label> <input
+                                id="modelo" type="text" class="form-control" th:field="*{modelo}"
+                                required autofocus="autofocus">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="anioLiquidado">Año liquidado : </label> <input
+                                id="anioLiquidado" type="text" class="form-control" th:field="*{anioLiquidado}"
+                                required autofocus="autofocus">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="fechaPago">Fecha de Pago: </label> <input
+                                id="fechaPago" type="text" class="form-control" th:field="*{fechaPago}"
+                                required autofocus="autofocus">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="estado">Valor Comercial : </label> <input
+                                id="estado" type="text" class="form-control" th:field="*{estado}"
+                                required autofocus="autofocus">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="valor">Propietario: </label> <input
+                                id="valor" type="text" class="form-control" th:field="*{valor}"
+                                required autofocus="autofocus">
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success">Actualizar </button>
+
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+
+        <br> <br>
+
+
+    </div>
+    <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+</body>
+</html>

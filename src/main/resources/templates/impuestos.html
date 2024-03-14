@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Impuesto de Vehiculos</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+    <!-- Optional theme -->
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+          crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                    aria-controls="navbar">
+                <span class="sr-only">Pago Impuesto Vehicular</span> <span
+                    class="icon-bar"></span> <span class="icon-bar"></span> <span
+                    class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#" th:href="@{/impuestos}">Listado de impuestos por placa</a>
+
+        </div>
+
+    </div>
+</nav>
+<br>
+<br>
+<div class="container">
+    <h1>Listado de impuestos</h1>
+    <br>
+    <a class="btn btn-primary" href="#" th:href="@{/impuestos/nuevo}">$Pago Impuesto </a>
+
+    <br> <br>
+
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+        <tr>
+            <th>Id</th>
+            <th>Placa</th>
+            <th>Modelo</th>
+            <th>Anio Liquidado</th>
+            <th>Fecha de Pago</th>
+            <th>Estado</th>
+            <th>Valor pagado</th>
+            <th>Acciones</th>
+
+
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="dato : ${impuestos}">
+            <td th:text="${dato.id}">Serial</td>
+            <td th:text="${dato.placa}">placa</td>
+            <td th:text="${dato.modelo}">modelo</td>
+            <td th:text="${dato.anioLiquidado}">año liquidado</td>
+            <td th:text="${dato.fechaPago}">fecha Pago</td>
+            <td th:text="${dato.estado}">combustible</td>
+            <td th:text="${dato.valor}">valor</td>
+            <td >
+                <a th:href="@{/impuestos/modificar/{serial}(serial=${dato.id})}" class="btn btn-info">Editar</a>
+                <a th:href="@{/impuestos/{serial}(serial=${dato.id})}" class="btn btn-danger">Eliminar</a>
+                <a th:href="@{/impuestos/nuevo}" class="btn btn-info">Pagar Impuesto</a>
+
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+</body>
+</html>
